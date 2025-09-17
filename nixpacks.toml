@@ -1,4 +1,5 @@
 providers = ["node"]
+<<<<<<< Current (Your changes)
 
 [phases.install]
 <<<<<<< Current (Your changes)
@@ -31,4 +32,9 @@ cmd = "npm start"
 <<<<<<< Current (Your changes)
 >>>>>>> Incoming (Background Agent changes)
 =======
+>>>>>>> Incoming (Background Agent changes)
+=======
+
+[start]
+cmd = "npm start"
 >>>>>>> Incoming (Background Agent changes)
