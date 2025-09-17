@@ -18,6 +18,7 @@ import aiosqlite
 import os
 from collections import defaultdict
 from collections import deque as _deque
+import contextlib
 
 
 app = FastAPI(title="Stress Test Lab - Backend")
