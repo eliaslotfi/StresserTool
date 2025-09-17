@@ -1,0 +1,29 @@
+{
+  "version": 2,
+  "name": "stresser-tool-frontend",
+  "builds": [
+    {
+      "src": "next.config.mjs",
+      "use": "@vercel/next"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ],
+  "env": {
+    "NEXT_PUBLIC_STRESS_API_BASE": "https://stressertool-production.up.railway.app",
+    "NODE_ENV": "production"
+  },
+  "functions": {
+    "app/api/*/route.ts": {
+      "runtime": "nodejs18.x"
+    }
+  }
+}

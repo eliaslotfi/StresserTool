@@ -12,7 +12,10 @@ const nextConfig = {
   // Configuration optimisée pour Vercel
   poweredByHeader: false,
   compress: true,
-  // Configuration pour Vercel (sans optimisations expérimentales)
+  // Optimisations Vercel
+  experimental: {
+    optimizeCss: true,
+  },
   // Headers de sécurité
   async headers() {
     return [
