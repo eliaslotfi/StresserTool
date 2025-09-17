@@ -2,7 +2,9 @@ providers = ["python"]
 
 [phases.install]
 cmds = [
-  "pip install -r backend/requirements.txt"
+  "python -m ensurepip --upgrade || true",
+  "python -m pip install --upgrade pip setuptools wheel",
+  "python -m pip install -r backend/requirements.txt"
 ]
 
 [phases.build]
