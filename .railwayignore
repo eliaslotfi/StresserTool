@@ -9,3 +9,8 @@ node_modules/
 .next/
 .git/
 README.md
+
+# Ignorer tous les fichiers TOML pour éviter les conflits
+*.toml
+railway*.toml
+nixpacks*.toml

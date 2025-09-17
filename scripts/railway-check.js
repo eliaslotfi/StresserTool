@@ -25,15 +25,18 @@ const checks = [
     fix: 'Ajoutez les scripts "build" et "start" dans package.json'
   },
   {
-    name: 'Configuration Railway (auto-détection)',
+    name: 'Configuration Railway (JSON)',
     check: () => {
-      // Vérifier que les fichiers TOML n'existent pas (pour éviter les conflits)
-      // ou que package.json est correctement configuré pour la détection auto
+      // Vérifier qu'il n'y a pas de fichiers TOML (pour éviter les conflits)
+      const hasToml = fs.existsSync('railway.toml') || fs.existsSync('nixpacks.toml');
+      const hasJson = fs.existsSync('railway.json') || fs.existsSync('nixpacks.json');
       const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
-      return pkg.dependencies && pkg.dependencies.next && 
-             pkg.scripts && pkg.scripts.build && pkg.scripts.start;
+      const hasValidPackage = pkg.dependencies && pkg.dependencies.next && 
+                             pkg.scripts && pkg.scripts.build && pkg.scripts.start;
+      
+      return !hasToml && (hasJson || hasValidPackage);
     },
-    fix: 'Railway utilisera la détection automatique basée sur package.json'
+    fix: 'Configuration JSON créée ou détection automatique basée sur package.json'
   },
   {
     name: 'Next.js configuré',
