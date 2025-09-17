@@ -1,0 +1,11 @@
+# Fichiers à ignorer lors du déploiement Railway
+backend/
+*.pyc
+__pycache__/
+.env.local
+.env.development
+.env.test
+node_modules/
+.next/
+.git/
+README.md

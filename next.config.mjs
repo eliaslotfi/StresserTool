@@ -9,15 +9,13 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  // Optimisations pour Railway
-  output: 'standalone',
-  experimental: {
-    outputFileTracingRoot: undefined,
-  },
-  // Configuration pour la production
+  // Configuration pour Railway
   poweredByHeader: false,
-  generateEtags: false,
   compress: true,
+  // Port dynamique pour Railway
+  env: {
+    PORT: process.env.PORT || '3000',
+  },
 }
 
 export default nextConfig
