@@ -9,25 +9,15 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-<<<<<<< Current (Your changes)
-  // Optimisations pour Railway
-  output: 'standalone',
-  experimental: {
-    outputFileTracingRoot: undefined,
-  },
+  // Configuration pour déploiement statique sur Infomaniak
+  output: 'export',
+  trailingSlash: true,
+  skipTrailingSlashRedirect: true,
+  distDir: 'out',
   // Configuration pour la production
   poweredByHeader: false,
   generateEtags: false,
   compress: true,
-=======
-  // Configuration pour Railway
-  poweredByHeader: false,
-  compress: true,
-  // Port dynamique pour Railway
-  env: {
-    PORT: process.env.PORT || '3000',
-  },
->>>>>>> Incoming (Background Agent changes)
 }
 
 export default nextConfig
