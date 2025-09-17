@@ -1,0 +1,5 @@
+# Alternative configuration si railway.toml pose problème
+# Renommez ce fichier en railway.toml si nécessaire
+
+[deploy]
+startCommand = "npm start"
