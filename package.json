@@ -6,7 +6,9 @@
     "build": "next build",
     "dev": "next dev",
     "lint": "next lint",
-    "start": "next start"
+    "start": "next start -p $PORT",
+    "railway:check": "node scripts/railway-check.js",
+    "railway:deploy": "npm run railway:check && echo 'Push to GitHub to deploy!'"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
