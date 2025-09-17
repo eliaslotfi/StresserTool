@@ -1,0 +1,12 @@
+import requests
+
+url = "http://127.0.0.1:8000/run_test"
+payload = {
+    "url": "http://192.168.1.100",  # ton serveur lab
+    "duration": 10,
+    "concurrency": 5,
+    "proxies": []  # vide pour mode direct
+}
+
+response = requests.post(url, json=payload)
+print(response.json())
