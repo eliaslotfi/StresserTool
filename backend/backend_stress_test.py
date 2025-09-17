@@ -22,14 +22,13 @@ from collections import deque as _deque
 
 app = FastAPI(title="Stress Test Lab - Backend")
 
+# CORS: configurable via env STRESS_ALLOW_ORIGINS (comma-separated). Default allows all.
+_allow_origins_env = os.getenv("STRESS_ALLOW_ORIGINS", "*")
+_allow_origins = [o.strip() for o in _allow_origins_env.split(",") if o.strip()] or ["*"]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000",
-        "http://127.0.0.1:3000",
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-    ],
+    allow_origins=_allow_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
