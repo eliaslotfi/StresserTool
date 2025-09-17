@@ -25,22 +25,18 @@ const checks = [
     fix: 'Ajoutez les scripts "build" et "start" dans package.json'
   },
   {
-    name: 'railway.toml configuré',
+    name: 'Configuration Railway (JSON)',
     check: () => {
-      if (!fs.existsSync('railway.toml')) return false;
-      const content = fs.readFileSync('railway.toml', 'utf8');
-      return content.includes('npm start');
+      // Vérifier qu'il n'y a pas de fichiers TOML (pour éviter les conflits)
+      const hasToml = fs.existsSync('railway.toml') || fs.existsSync('nixpacks.toml');
+      const hasJson = fs.existsSync('railway.json') || fs.existsSync('nixpacks.json');
+      const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+      const hasValidPackage = pkg.dependencies && pkg.dependencies.next && 
+                             pkg.scripts && pkg.scripts.build && pkg.scripts.start;
+      
+      return !hasToml && (hasJson || hasValidPackage);
     },
-    fix: 'Configurez railway.toml avec startCommand = "npm start"'
-  },
-  {
-    name: 'nixpacks.toml configuré',
-    check: () => {
-      if (!fs.existsSync('nixpacks.toml')) return false;
-      const content = fs.readFileSync('nixpacks.toml', 'utf8');
-      return content.includes('providers = ["node"]');
-    },
-    fix: 'Configurez nixpacks.toml pour Node.js'
+    fix: 'Configuration JSON créée ou détection automatique basée sur package.json'
   },
   {
     name: 'Next.js configuré',

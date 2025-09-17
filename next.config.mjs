@@ -9,6 +9,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+<<<<<<< Current (Your changes)
   // Optimisations pour Railway
   output: 'standalone',
   experimental: {
@@ -18,6 +19,15 @@ const nextConfig = {
   poweredByHeader: false,
   generateEtags: false,
   compress: true,
+=======
+  // Configuration pour Railway
+  poweredByHeader: false,
+  compress: true,
+  // Port dynamique pour Railway
+  env: {
+    PORT: process.env.PORT || '3000',
+  },
+>>>>>>> Incoming (Background Agent changes)
 }
 
 export default nextConfig
