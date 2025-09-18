@@ -98,8 +98,4 @@ export function useAuthStatic() {
 }
 
 // Import React pour useState et useEffect
-<<<<<<< HEAD
 import { useState, useEffect } from 'react';
-=======
-import { useState, useEffect } from 'react';
->>>>>>> 7eb27595690a67cfae29787d0f5aa9f617a65dbf

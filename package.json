@@ -4,11 +4,17 @@
   "private": true,
   "scripts": {
     "build": "next build",
+<<<<<<< HEAD
+=======
+    "build:infomaniak": "node scripts/build-infomaniak.js",
+    "export": "next export",
+>>>>>>> 7eb27595690a67cfae29787d0f5aa9f617a65dbf
     "dev": "next dev",
     "lint": "next lint",
     "start": "next start -p $PORT",
     "railway:check": "node scripts/railway-check.js",
-    "railway:deploy": "npm run railway:check && echo 'Push to GitHub to deploy!'"
+    "railway:deploy": "npm run railway:check && echo 'Push to GitHub to deploy!'",
+    "deploy:infomaniak": "npm run build:infomaniak && node scripts/prepare-infomaniak.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
