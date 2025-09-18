@@ -9,38 +9,9 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-<<<<<<< HEAD
   poweredByHeader: false,
   generateEtags: false,
   compress: true,
-=======
-  // Configuration optimisée pour Vercel
-  poweredByHeader: false,
-  compress: true,
-  // Configuration pour Vercel (sans optimisations expérimentales)
-  // Headers de sécurité
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'X-Frame-Options',
-            value: 'DENY',
-          },
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
-          },
-          {
-            key: 'Referrer-Policy',
-            value: 'strict-origin-when-cross-origin',
-          },
-        ],
-      },
-    ]
-  },
->>>>>>> 7eb27595690a67cfae29787d0f5aa9f617a65dbf
 }
 
 export default nextConfig

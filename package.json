@@ -3,12 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "next build",
-<<<<<<< HEAD
-=======
-    "build:infomaniak": "node scripts/build-infomaniak.js",
-    "export": "next export",
->>>>>>> 7eb27595690a67cfae29787d0f5aa9f617a65dbf
+  "build": "next build",
     "dev": "next dev",
     "lint": "next lint",
     "start": "next start -p $PORT",
