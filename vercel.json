@@ -20,10 +20,5 @@
   "env": {
     "NEXT_PUBLIC_STRESS_API_BASE": "https://stressertool-production.up.railway.app",
     "NODE_ENV": "production"
-  },
-  "functions": {
-    "app/api/*/route.ts": {
-      "runtime": "nodejs18.x"
-    }
   }
 }
