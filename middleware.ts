@@ -33,7 +33,7 @@ export function middleware(request: NextRequest) {
     const cookieHeader = request.headers.get('cookie');
     const sessionToken = getSessionTokenFromCookies(cookieHeader);
     if (!sessionToken || !verifySessionToken(sessionToken)) {
-      return NextResponse.redirect(new URL('/api/auth/login', request.url));
+      return NextResponse.redirect(new URL('/login', request.url));
     }
   }
   
