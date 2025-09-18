@@ -4,8 +4,8 @@ import { getSessionTokenFromCookies, verifySessionToken } from '@/lib/auth';
 
 // Routes qui nécessitent une authentification
 const protectedRoutes = [
-  // Ajoutez ici les routes API que vous voulez protéger
-  // '/api/protected-endpoint',
+  '/', // protège la page d'accueil (toutes les pages Next.js sauf login)
+  '/api', // protège toutes les routes API sauf auth
 ];
 
 // Routes d'authentification qui ne nécessitent pas d'être authentifié
@@ -23,16 +23,17 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
   
-  // Vérifier l'authentification pour les routes protégées
-  if (protectedRoutes.some(route => pathname.startsWith(route))) {
+  // Protéger toutes les autres routes (sauf assets publics)
+  if (
+    protectedRoutes.some(route => pathname === route || pathname.startsWith(route)) &&
+    !pathname.startsWith('/_next') &&
+    !pathname.startsWith('/public') &&
+    !pathname.startsWith('/favicon')
+  ) {
     const cookieHeader = request.headers.get('cookie');
     const sessionToken = getSessionTokenFromCookies(cookieHeader);
-    
     if (!sessionToken || !verifySessionToken(sessionToken)) {
-      return NextResponse.json(
-        { error: 'Non autorisé' },
-        { status: 401 }
-      );
+      return NextResponse.redirect(new URL('/api/auth/login', request.url));
     }
   }
   
