@@ -31,10 +31,17 @@ export function LoginForm({ onLogin }: LoginFormProps) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ password }),
+        redirect: 'manual', // important pour détecter la redirection
       });
 
-      const data = await response.json();
+      // Si redirection, suivre la redirection côté client
+      if (response.status === 302 || response.type === 'opaqueredirect') {
+        window.location.href = '/';
+        return;
+      }
 
+      // Sinon, traiter la réponse JSON (erreur de login)
+      const data = await response.json();
       if (data.success) {
         onLogin();
       } else {

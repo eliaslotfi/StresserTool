@@ -49,15 +49,9 @@ export async function POST(request: NextRequest) {
     // Connexion réussie
     authStorage.recordSuccessfulLogin(clientIP);
     const sessionToken = generateSessionToken();
-    
-    const response = NextResponse.json(
-      { success: true, message: 'Connexion réussie' },
-      { status: 200 }
-    );
-    
-    // Définir le cookie de session
+    // Redirige vers la page d'accueil après succès et pose le cookie
+    const response = NextResponse.redirect(new URL('/', request.url));
     response.headers.set('Set-Cookie', createSessionCookie(sessionToken));
-    
     return response;
     
   } catch (error) {
